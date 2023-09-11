@@ -1,25 +1,25 @@
 // Assignment code here
 
 // Variable Declaration
-var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz".split("");
-var uppercaseLetters = lowercaseLetters.map(item => item.toUpperCase());
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".split("");
+var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseLetters = lowercaseLetters.toUpperCase();
+var numbers = "0123456789";
+var specialCharacters = " \\!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"; // String copied from OWASP.org but had to backslash out
 
 
 console.log(lowercaseLetters);
 console.log(uppercaseLetters);
 console.log(numbers);
-console.log(specialCharacters); // Will '\\' create issues? Create password with two backslashes?
+console.log(specialCharacters);
 
 function generatePassword () {
 
   var passwordLength = parseInt(prompt("Please entered desired password length between 8 and 128 characters."));
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    alert("Please enter a valid password length between 8 and 128 characters.");
+    alert("Please try again, enter a valid password length of no less than 8 and no more than 128 characters.");
     return;
   }
-  var useLowercase = confirm("Include lowercase letters?");
+  var useLowercase = confirm("Include lowercase letters?"); //is it possible to replace cancel with "NO'?"
   var useUppercase = confirm("Include uppercase letters?");
   var useNumbers = confirm("Include numbers?");
   var useSpecialChars = confirm("Include special characters?");
