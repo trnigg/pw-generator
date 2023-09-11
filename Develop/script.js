@@ -42,14 +42,9 @@ for (var i = 0; i < passwordLength; i++) {
   password += charSet.charAt(randomIndex);
 }
 console.log(password);
+return password;
+
   }
-
-
-// OLD CODE BELOW
-// function generatePassword(length, useUppercase, useLowercase, useNumbers, useSpecialChars) {
-  
-
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
