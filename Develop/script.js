@@ -32,7 +32,7 @@ function generatePassword () {
   }
 
   // Declared the password and selects random chars from character set to the required length, as determined above
-  password = "";
+  let password = "";
   for (let i = 0; i < passwordLength; i++) {
     let randomIndex = Math.floor(Math.random() * charSet.length);
     password += charSet.charAt(randomIndex);
@@ -47,7 +47,7 @@ let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
+  password = generatePassword();
   let passwordText = document.querySelector("#password");
 
   // Displays message if any requirements haven't been fulfilled, otherwise displays pw (this is appended to starter-code)
