@@ -2,26 +2,26 @@
 function generatePassword () {
 
   // Issues prompt for password length; alerts if length-criteria not met, then returns
-  var passwordLength = parseInt(prompt("Please entered desired password length between 8 and 128 characters."));
+  let passwordLength = parseInt(prompt("Please enter desired password length between 8 and 128 characters."));
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    alert("Please try again, enter a valid password length of no less than 8 and no more than 128 characters.");
+    alert("Please try again with a valid password length of no less than 8 and no more than 128 characters.");
     return;
   }
 
   // Declare possible characters
-  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-  var uppercaseChars = lowercaseChars.toUpperCase();
-  var numbers = "0123456789";
-  var specialChars = " \\!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"; // String copied from OWASP.org but had to backslash out
+  let lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  let uppercaseChars = lowercaseChars.toUpperCase();
+  let numbers = "0123456789";
+  let specialChars = " \\!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"; // String copied from OWASP.org but had to backslash out
 
-  // Checks for which character-sets to include
-  var useLowercase = confirm("Include lowercase letters?"); //is it possible to replace cancel with "NO'?"
-  var useUppercase = confirm("Include uppercase letters?");
-  var useNumbers = confirm("Include numbers?");
-  var useSpecialChars = confirm("Include special characters?");
+  // Check / Declare which character-sets to include
+  let useLowercase = confirm("Include lowercase letters?"); //is it possible to replace cancel with "NO'?"
+  let useUppercase = confirm("Include uppercase letters?");
+  let useNumbers = confirm("Include numbers?");
+  let useSpecialChars = confirm("Include special characters?");
 
   // Defines character-set to use in function based of response to above; alerts if no sets are selected
-  var charSet = ("");
+  let charSet = "";
   if (useLowercase) charSet += lowercaseChars;
   if (useUppercase) charSet += uppercaseChars;
   if (useNumbers) charSet += numbers;
@@ -32,26 +32,30 @@ function generatePassword () {
   }
 
   // Declared the password and selects random chars from character set to the required length, as determined above
-var password = "";
-for (var i = 0; i < passwordLength; i++) {
-  var randomIndex = Math.floor(Math.random() * charSet.length);
-  password += charSet.charAt(randomIndex);
+  let password = "";
+  for (let i = 0; i < passwordLength; i++) {
+    let randomIndex = Math.floor(Math.random() * charSet.length);
+    password += charSet.charAt(randomIndex);
   }
-
-return password;
+  return password;
 }
 
-// Provided code below:
+// Starter-code below:
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  // Displays message if any requirements haven't been fulfilled, otherwise displays pw (this is appended to starter-code)
+  if (!password) {
+    passwordText.value = "Please try again.";
+  } else {
+    passwordText.value = password;
+  }
 }
 
 // Add event listener to generate button
