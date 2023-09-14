@@ -31,6 +31,4 @@ The user could generate a new password by clicking the button again and completi
 
 ## License
 
-MIT License.
-
-Please refer to the license section in the repo for further information.
+N/A
